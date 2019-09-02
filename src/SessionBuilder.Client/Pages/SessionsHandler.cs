@@ -61,8 +61,8 @@ namespace SessionBuilder.Client.Pages
         public TimeSpan? TimeTillNextSession(Session session)
         {
             var nextSession = this.Speaker.Sessions
-                                            .OrderBy(sess => sess.ScheduledAt)
-                                            .FirstOrDefault(sess => sess.Id != session.Id && sess.ScheduledAt > session.ScheduledAt);
+                .OrderBy(sess => sess.ScheduledAt)
+                .FirstOrDefault(sess => sess.Id != session.Id && sess.ScheduledAt > session.ScheduledAt);
             if (nextSession == null) return null;
 
             return nextSession.ScheduledAt - session.ScheduledAt.Add(session.Length);

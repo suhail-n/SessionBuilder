@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/macos,csharp,windows,dotnetcore
-# Edit at https://www.gitignore.io/?templates=macos,csharp,windows,dotnetcore
+# Created by https://www.gitignore.io/api/macos,csharp,windows,dotnetcore,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=macos,csharp,windows,dotnetcore,visualstudiocode
 
 ### Csharp ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -391,6 +391,17 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -417,4 +428,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/macos,csharp,windows,dotnetcore
+# End of https://www.gitignore.io/api/macos,csharp,windows,dotnetcore,visualstudiocode

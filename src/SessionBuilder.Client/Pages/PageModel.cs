@@ -21,8 +21,8 @@ namespace SessionBuilder.Client.Pages
             }
             else
             {
-                System.Console.Clear();
-                System.Console.WriteLine("Input was invalid.");
+                Console.Clear();
+                Console.WriteLine("Input was invalid.");
                 this.PrintMenu();
                 return false;
             }

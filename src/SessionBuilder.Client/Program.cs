@@ -1,4 +1,5 @@
 ﻿using System;
+using SessionBuilder.Client.Pages;
 
 namespace SessionBuilder.Client
 {
@@ -6,7 +7,14 @@ namespace SessionBuilder.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            while (true)
+            {
+                Run(new HomeView());
+            }
+        }
+        static void Run(IPage page)
+        {
+            page.Load();
         }
     }
 }

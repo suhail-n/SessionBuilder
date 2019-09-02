@@ -4,10 +4,10 @@ namespace SessionBuilder.Client.Pages
 {
     public abstract class PageModel : IPage
     {
-        private int _numOfOptions;
+        private readonly int numOfOptions;
         public PageModel(int numOfOptions)
         {
-            this._numOfOptions = numOfOptions;
+            this.numOfOptions = numOfOptions;
         }
         public abstract void PrintMenu();
         public abstract void HandleInput(int option);
@@ -15,7 +15,7 @@ namespace SessionBuilder.Client.Pages
         {
             int number;
             var res = int.TryParse(input, out number);
-            if (res && (number >= 0 && number <= this._numOfOptions))
+            if (res && (number >= 0 && number <= this.numOfOptions))
             {
                 return true;
             }

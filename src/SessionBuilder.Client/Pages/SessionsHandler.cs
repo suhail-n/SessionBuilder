@@ -7,11 +7,11 @@ namespace SessionBuilder.Client.Pages
 {
     public class SessionsHandler
     {
-        private ISpeakerDao _speakerDao;
+        private readonly ISpeakerDao speakerDao;
         public Speaker Speaker { get; }
         public SessionsHandler(ISpeakerDao speakerDao)
         {
-            this._speakerDao = speakerDao;
+            this.speakerDao = speakerDao;
             this.Speaker = speakerDao.FindAllSpeakers().First();
         }
         public bool IsSessionOverlapping(Session currentSession)

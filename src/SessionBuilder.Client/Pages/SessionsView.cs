@@ -7,10 +7,10 @@ namespace SessionBuilder.Client.Pages
 {
     public class SessionsView : PageModel
     {
-        private SessionsHandler _sessionHandler;
+        private readonly SessionsHandler sessionHandler;
         public SessionsView() : base(2)
         {
-            this._sessionHandler = new SessionsHandler(new SpeakerInMemoryDao());
+            this.sessionHandler = new SessionsHandler(new SpeakerInMemoryDao());
         }
 
         public override void HandleInput(int option)
@@ -34,20 +34,20 @@ namespace SessionBuilder.Client.Pages
                 SESSIONS
 ========================================"
             );
-            Console.WriteLine($"Session for {this._sessionHandler.Speaker.Name}");
+            Console.WriteLine($"Session for {this.sessionHandler.Speaker.Name}");
             // subheader get num of days till birthday
-            Console.WriteLine($"Speakers Birthday in {this._sessionHandler.DaysUntillBirthday()} days");
-            foreach (var session in this._sessionHandler.Speaker.Sessions)
+            Console.WriteLine($"Speakers Birthday in {this.sessionHandler.DaysUntillBirthday()} days");
+            foreach (var session in this.sessionHandler.Speaker.Sessions)
             {
                 Console.WriteLine("****************************************");
                 // header
                 // Title
                 Console.WriteLine($"      {session.Title}    ");
                 // the time range from start to finish
-                Console.WriteLine($"     {this._sessionHandler.SessionStartEndTime(session)}        ");
-                Console.WriteLine($"Submitted {session.SubmittedAt} ({this._sessionHandler.GetDaySinceSubmitted(session)} days ago)");
+                Console.WriteLine($"     {this.sessionHandler.SessionStartEndTime(session)}        ");
+                Console.WriteLine($"Submitted {session.SubmittedAt} ({this.sessionHandler.GetDaySinceSubmitted(session)} days ago)");
                 Console.WriteLine($"{session.Abstract}");
-                if (this._sessionHandler.SpeakerHasLaterSessions(session))
+                if (this.sessionHandler.SpeakerHasLaterSessions(session))
                 {
                     Console.WriteLine("Speaker has one or more sessions after this");
                 }
@@ -55,14 +55,14 @@ namespace SessionBuilder.Client.Pages
                 {
                     Console.WriteLine("Speaker has no more sessions after this");
                 }
-                if (this._sessionHandler.IsSessionOverlapping(session))
+                if (this.sessionHandler.IsSessionOverlapping(session))
                 {
                     var defaultColor = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Session is Overlapping");
                     Console.ForegroundColor = defaultColor;
                 }
-                var timeToNextSession = this._sessionHandler.TimeTillNextSession(session);
+                var timeToNextSession = this.sessionHandler.TimeTillNextSession(session);
                 if (timeToNextSession == null)
                 {
                     Console.WriteLine("There are no upcoming sessions");
